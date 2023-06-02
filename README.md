@@ -14,7 +14,7 @@ Given 1 client and 3 server nodes, how do the nodes come to a consensus of recei
 
 A node has 3 states: Follower, Candidate, and Leader. 
 
-<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/states.png" width="55%">
+<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/states.png" width="50%">
 
 If followers don't hear from a leader, they can become a candidate.
 
@@ -24,17 +24,17 @@ Then the candidate requests votes from other nodes.
 
 <img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/requestsVotes.png" width="55%">
 
-The nodes replies with their votes
+The nodes replies with their votes.
 
 <img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/repliesWithVote.png" width="55%">
 
 The candidate has become the leader. From now, all changes go through the leader. 
 
-<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/candidateBecomesALeader.png" width="70%">
+<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/candidateBecomesALeader.png" width="60%">
 
 Every change from the client to the server is added as an entry in the node's log. This log entry is uncommitted so it won't update the node's value.
 
-<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/uncommitted.png" width="70%">
+<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/uncommitted.png" width="60%">
 
 Before committing the entry, the node first replicates the log entry to the follower nodes.
 
@@ -84,11 +84,21 @@ The leader starts sending out AppendEntries messages specified by the heartbeat 
 
 <img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/sendsOutAppendEntries.png" width="55%">
 
-Followers then respond to each Append Entries message.
+Followers then respond to each AppendEntries message.
 
 <img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/respondsToAppendEntries.png" width="55%">
 
 This election term will continue until a follower stops receiving heartbeats and becomes a candidate.
+
+<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/respondsToAppendEntries.png" width="55%">
+
+Let's stop the leader.
+
+<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/stoppedLeader.png" width="55%">
+
+After the heartbeat timeout reaches, a follower becomes a candidate. [The leader election](#1-leader-election) repeats.
+
+<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/newLeaderElection.png" width="55%">
 
 ### 2) Log Replication
 
