@@ -40,7 +40,7 @@ Before committing the entry, the node first replicates the log entry to the foll
 
 <img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/replicatesLogEntry.png" width="75%">
 
-The leader waits until a majority of nodes have written the entry and send back acknowledgment messages
+The leader waits until a majority of nodes have written the entry and send back acknowledgment messages.
 
 <img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/sendsBackAcknowledgement.png" width="75%">
 
@@ -72,7 +72,7 @@ then it sends vote requests to other nodes
 
 If the receiving node hasn't voted yet in this term then it votes for the candidate. Then it resets its election timeout.
 
-<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/votesForTheCandidate.png" width="55%">
+<img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/votesForTheCandidate.png" width="50%">
 
 ##### 2.2) Heartbeat timeout
 
@@ -111,3 +111,7 @@ A response is sent to the client.
 
 <img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/sendsResponseToClient.png" width="70%">
 
+## References
+
++ Visualisations: https://raft.github.io
++ Specification: https://raft.github.io/raft.pdf
