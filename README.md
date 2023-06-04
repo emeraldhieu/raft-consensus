@@ -2,7 +2,7 @@
 
 ## Problem
 
-Given 1 client and 3 server nodes, how do the nodes come to a consensus of receiving the message from the client?
+Given 1 client and 3 server nodes, how do the nodes come to a consensus of receiving a message from the client?
 
 <img src="https://github.com/emeraldhieu/raft-consensus/blob/master/images/problem.png" width="55%">
 
